@@ -1,0 +1,347 @@
+% ======================= Pre-Amble =========================
+      
+%Format
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format 
+                     						%imports package {article} and specify option(s) [11pt, oneside]
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots. 
+    \geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+    %\geometry{landscape}                		% Activate for rotated page geometry
+
+\usepackage[parfill]{parskip}    		        % Activate to begin paragraphs with an empty line rather than an indent
+
+    %Colours
+    \usepackage{graphicx, subcaption}
+    \usepackage[usenames, dvipsnames]{color}     % font colour:    \textcolor{<colour>}{text}
+          									%highlight text:  \colorbox{<color>}{text}
+    \usepackage{soul}						%highlight text: \hl{}     %only  yellow								
+    									%list of colours: https://www.sharelatex.com/learn/Using_colours_in_LaTeX
+    									
+    %Bullets
+    \usepackage{enumerate}     %specify type of enumeration: \being{enumerate}[<type of enumeration>]
+    
+    %Footnote Spacing
+    \setlength{\footnotesep}{0.4cm}                  %specify spacing b/w footnotes
+    \setlength{\skip\footins}{0.6cm}                    % space b/w footnotes and textbody
+
+
+%Mattematics
+    %American Mathematics Society packages
+    \usepackage{amsmath}	   %math
+    \usepackage{amssymb}       %symbols
+    \usepackage{amsthm}          %theorems
+
+    %QED
+    \newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}         %make qed filled square:    \QEDA
+    \newcommand*{\QEDB}{\hfill\ensuremath{\square}}               %make qed empty square: \QEDB 
+    
+    \renewcommand\qedsymbol{\ensuremath{\blacksquare}}		%Proof environment
+
+
+%Figures
+\usepackage{caption}
+\captionsetup[figure]{labelfont=bf}    %make figure labels boldface
+\captionsetup[table]{labelfont=bf}     %make table labels boldface
+
+\usepackage[hidelinks]{hyperref}                % Allows for clickable references
+
+    %Tables
+    \usepackage[none]{hyphenat}                    % Stops breaking-up words in a table (i.e. no hyphens)                                                             
+    
+    \usepackage{array}   
+    \newcolumntype{x}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}       %center fixed column width: x{<len>}                      
+    \newcolumntype{$}{>{\global\let\currentrowstyle\relax}}                                                   % let us apply things (e.g. bold/italicize) to entire row            
+    \newcolumntype{^}{>{\currentrowstyle}}
+    \newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1} #1\ignorespaces}
+    
+    %Images
+    \graphicspath{ {images/} }                          %directory that your images are located in within your current directory
+    
+    %Diagrams
+    \usepackage[latin1]{inputenc}
+    \usepackage{tikz}
+    \usepackage{tkz-berge}
+    \usetikzlibrary{shapes,arrows}
+
+
+%Bibliography
+\usepackage[numbers,sort&compress]{natbib}   %for multiple references: sorts  (i.e. [1,2] NOT [2, 1] )
+                                           				  %                                     compresses (i.e. [1-3] )
+\usepackage[nottoc]{tocbibind}                            %add bibliography to table of contents
+
+
+%Miscellaneous
+\usepackage{dirtytalk}    %quotations: use \say  
+
+
+
+%=========== Header & Footer =========================
+\usepackage{fancyhdr}
+\usepackage{lastpage}      %ensures you can reference LastPage (i.e. Page 2 of 10)
+
+\renewcommand{\headrulewidth}{0.4pt}		%Decorative Header line: thickness={0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}		%Decorative Footer line: thickness={0.4pt}
+
+\setlength{\headheight}{13.6pt} 		%space b/w top of page & header
+\setlength{\headsep}{0.3in}		%space b/w page header and body
+
+%Make Header & Footer    
+\pagestyle{fancy}
+    \lhead{Stephanie Knill} 		% controls the left corner of the header
+    \chead{} 					% controls the center of the header
+    \rhead{} 					% controls the right corner of the header
+    \lfoot{} 					% controls the left corner of the footer
+    \cfoot{Page~\thepage\ of \pageref{LastPage}} 				% controls the center of the footer
+    												%Page~\thepage\  if just want Page x
+    \rfoot{}			 		% controls the right corner of the footer
+
+% ======================== Document ======================
+\begin{document}
+
+% Title Page
+\title{MATH 220 --- Assignment 6 \\
+\line(1,0){360} \\              %(slope x, y){length of line}
+}
+\author{
+Stephanie Knill \\
+54882113 \\
+Due: February 25, 2016}
+
+\date{}                   % Activate:  display a given date (e.g. {August 4} ) or no date (empty {} )
+                                    %No activate: display current date
+\maketitle
+
+%\thispagestyle{empty}                   %Remove header from this (first) page. Change empty -> plain to keep numbering
+%								-> Doesn't matter in this case (b/c title page)
+%\cleardoublepage
+
+
+% ================= Questions ================
+
+\section*{Question 1}
+
+\textbf{Proposition:} $\sqrt{6}$ is irrational.
+
+\begin{proof}
+Assume that $\sqrt{6}$ is rational. Then there exists natural numbers $a$ and $b$ such that
+$$\sqrt{6} = \frac{a}{b}$$
+Then by the axiom of natural numbers, we can take a pair $(a,b)$ with smallest $b$ (i.e. $a$ and $b$ have no common factors). So we have
+\begin{align*}
+    \sqrt{6} \cdot b & = a \\
+    6b^2 & =a^2 \\
+    2(3b^2) & = a^2
+\end{align*}
+This means that $a^2$ is even if and only if $a$ is even (proof done in class). Since $a$ is even, then there exist a natural number $k$ such that $a=2k$. Substituting this back gives us
+\begin{align*}
+	6b^2 & =(2k)^2 \\
+	6b^2 & = 4k^2 \\
+	3b^2 & = 2k^2 
+\end{align*}
+Here, $3b^2$ is even. By the properties of congruence, $b^2$ is also even. Since $b^2$ is even, then $b$ is even. However, $a$ and $b$ have no common factors. If $a$ is even, then $b$ must be odd. Since $b$ cannot be both even and odd, we have arrived at a contradiction. Thus our initial assumption is false and $\sqrt{6}$ is irrational.
+\end{proof}
+
+\section*{Question 2}
+
+\textbf{Proposition:} $\sqrt{2} + \sqrt{3}$ is irrational.
+
+\begin{proof}
+Assume that $\sqrt{2} + \sqrt{3}$ is rational. Then there exists natural numbers $a$ and $b$ such that
+$$\sqrt{2} +\sqrt{3} = \frac{a}{b}$$
+Performing algebraic manipulation yields
+\begin{align*}
+    (\sqrt{2} + \sqrt{3}) b & = a \\
+    (2 + \sqrt{6} + 3)b^2 & =a^2 \\
+    \sqrt{6}b + 5b^2 & = a^2 \\
+    \sqrt{6} & = \frac{a^2-5b^2}{b^2} \\
+    & = \frac{a^2}{b^2} - 5 
+\end{align*}
+From Question 1, we know that $\sqrt{6}$ is irrational. However, $\frac{a^2}{b^2}-5$ is rational, thereby giving us a contradiction. Thus our initial assumption is false and $\sqrt{2}+\sqrt{3}$ is irrational.
+\end{proof}
+
+\section*{Question 3}
+
+\textbf{Proposition:} If $a, b$ both odd, then $a^2+b^2$ cannot be a perfect square.
+
+\begin{proof}
+Assume that $a^2+b^2$ is a perfect square. Then there exists an integer $c$ such that
+$$a^2+b^2=c^2$$
+Let us partition the value of $c^2$ into two cases: $c^2$ is even and $c^2$ is odd.
+
+\textbf{Case 1:} $c^2$ is even.
+
+Since $c^2$ is even, then $c$ is also even. Then there exists an integer $k$ such that
+\begin{align*}
+	a^2+b^2 & = (2k)^2 \\
+	& = 4k^2 \\
+	& = 2k^2 + 2k^2
+\end{align*}
+Here we have that $a^2=b^2 = 2k^2$. Since $a^2$ and $b^2$ are both even, then $a$ and $b$ are both even. 
+
+\textbf{Case 2:} $c^2$ is odd.
+
+Since $c^2$ is odd, then $c$ is also odd. Then there exists an integer $q$ such that
+\begin{align*}
+	a^2+b^2 & = (2q+1)^2 \\
+	& = (4q^2) + (4q+1)
+\end{align*}
+Without loss of generality, let $a^2=4q^2=2(2q^2)$ and $b^2=4q+1=2(2q)+1$. Since $a^2$ is even, then $a$ is even. Similarly, since $b^2$ is odd, then $b$ is odd. Thus we have that either 1) $a$ is even and $b$ is odd, or 2) $a$ is odd and $b$ is even.
+
+Combining both cases, we have that for all values of $c^2$, $a$ or $b$ is even. In other words, $a$ and $b$ are both \textit{not} odd, giving us the necessary contradiction.
+\end{proof}
+
+
+\section*{Question 4}
+
+\textbf{Proposition:} The number 123456782 cannot be represented as $a^2+3b^2$ for any integers $a$ and $b$.
+
+\begin{proof}
+Assume that 123456782 can be represented as $a^2+3b^2$ for any integers $a$ and $b$. Using long division, we find that
+\begin{align*}
+	123456782 & = a^2+3b^2 \\
+	& = 2 + 3 \cdot (41152260)
+\end{align*}
+which gives us $a^2=2$ and $b^2=4115226$. However, $a=\sqrt{2}$ which contradicts our assumption that $a$ belongs to the set of integers. Thus our initial assumption is false, thereby proving that the number 123456782 cannot be represented as $a^2+3b^2$ for any integers $a$ and $b$.
+\end{proof}
+
+\cleardoublepage
+\section*{Question 5}
+\begin{enumerate}[(a)]
+	\item \textbf{Conjecture:} There are infinitely many primes $p$ such that $p \equiv 3 \text{ mod } 4$.
+
+
+	\begin{proof}
+	Assume there is a finite number of primes $p$ such that $p \equiv 3 \text{ mod } 4$.  We will denote this set by $P' = \{ p \mid p \text{ is prime and } p \equiv 3 \text{ (mod 4)}\}$, which is a proper subset of the finite set of all primes $P = \{p \mid p \text{ is prime}\}$. Let $q= p_1 \cdot p_2 \cdot \ldots \cdot p_n$ be the product of all primes that are congruent to 3 modulo 4. Consider
+	\begin{align*}
+		N & = 4q - 1 \\
+		N &= 4(q-1)+ 3 \\
+		N - 3 &= 4(q-1)
+	\end{align*}	
+	Then $4 \mid N-3$ and $N \equiv 3 \text{ mod } 4$. By the Fundamental Theorem of Arithmetic, $N$ can be factored as a product of prime numbers. By Lemma, there exists such a prime factor $k$ that is congruent to 3 (mod 4). Since $k \mid N$, then by our in class Lemma $k \nmid N + 1 = 4q$. So $k$ is not in the set of all primes $P$, which contradicts our initial assumption. Thus there are infinitely many primes $p$ such that $p \equiv 3 \text{ mod } 4$.
+	\end{proof}
+	
+	\emph{Lemma} $N$ has a prime factor congruent to 3 (mod 4).
+	
+	Assume that $N$ has no prime factors congruent to 3 (mod 4). Then all prime factors must be of the form $4m$, $4m+1$, or $4m+2$. However, since we are only looking for prime factors and 2 cannot be a factor (since $N$ is odd) then we cannot be of the form $4m$ or $4m+2$. Since all prime factors must be of the form $4m+1$, let us express this in terms of congruence, where $p_i \equiv$ 1 (mod 4) and $p_j \equiv$ 1 (mod 4):
+	\begin{align*}
+		p_i \cdot p_j & \equiv 1 \cdot 1 \text{ (mod 4)} \\
+		& \equiv 1 \text{ (mod 4)}
+	\end{align*}
+	However, this contradicts the fact that $N$ is congruent to 3 (mod 4). Thus, $N$ has a prime factor congruent to 3 (mod 4).
+	
+%	examine the product of two such primes $p_i=4p+1$ and $p_j=4q+1$:
+%	\begin{align*}
+%		(4p+1)(4q+1) &= 16pq + 4p + 4q + 1 \\
+%		& = 4(4pq + p + q) + 1
+%	\end{align*}
+%	which is also of the form $4m+1$.
+
+	
+	\item To prove that there are infinitely many primes congruent to 1 modulo 4, we would instead consider $N = 4q + 1$. However, when we arrive at our Lemma, the proof will break down as $N$ does not have to have a prime factor congruent to 1 (mod 4).
+	
+	
+	%The remaining proof is similar to above and is left as an exercise to the reader.
+\end{enumerate}
+
+\section*{Question 6}
+
+Find the last digit of the number $2016^{2016}$.
+
+Breaking the number 2016 into its prime factors allows us to re-express it as
+$$2016 = 2^5 \cdot 3^2 \cdot 7 = 2^3 \cdot (2 \cdot 3) \cdot (2 \cdot 3 \cdot 7) = 2^3 \cdot 6 \cdot 42$$
+Similarly, $2016^{2016}$ can be expressed as 
+$$2016^{2016} = (2^3 \cdot 6 \cdot 42)^{2016} = (2^3)^{2016} \cdot (6)^{2016} \cdot (42)^{2016}$$
+To find the last digit, let us find the congruence of each product to modulo 10. Using the power of 2 method, $(2^3)^{2016}$ can be reduced to 
+\begin{align*}
+	(2^3)^{2016} & \equiv (2^5)^{1209} \cdot 2^3 \equiv 2^{1209} \cdot 2^3 \text{ (mod 10)}\\
+	& \equiv 2^{1212} \equiv (2^5)^{242} \cdot 2^2 \equiv 2^{242} \cdot 2^2 \text{ (mod 10)}\\
+	& \equiv 2^{244} \equiv (2^5)^{48} \cdot 2^4 \equiv 2^{48} \cdot 2^4 \text{ (mod 10)}\\
+	& \equiv 2^{52} \equiv (2^5)^{10} \cdot 2^2 \equiv 2^{10} \cdot 2^2 \text{ (mod 10)}\\
+	& \equiv 2^{12} \equiv (2^5)^2 \cdot 2^2 \equiv 2^2 \cdot 2^2 \text{ (mod 10)}\\
+	& \equiv 2^4 \text{ (mod 10)}\\
+	& \equiv 16 \text{ (mod 10)}\\
+	& \equiv 6 \text{ (mod 10)}\\
+\end{align*}
+Using the power of 6 method, we can reduce $(6)^{2016}$ to
+\begin{align*}
+	6^{2016} & \equiv 6 \text{ (mod 10)}\\
+\end{align*}
+Again using the power of 2 method, we have that 
+\begin{align*}
+	(42)^{2016} & \equiv 2^{2016} \text{ (mod 10)}\\
+	& \equiv (2^5)^{403} \cdot 2^1 \equiv 2^{403} \cdot 2^1 \text{ (mod 10)}\\
+	& \equiv 2^{404} \equiv (2^5)^{80} \cdot 2^4 \equiv 2^{80} \cdot 2^4 \text{ (mod 10)}\\
+	& \equiv 2^{84} \equiv (2^5)^{16} \cdot 2^4 \equiv 2^{16} \cdot 2^4 \text{ (mod 10)}\\
+	& \equiv 2^{20} \equiv (2^5)^4 \text{ (mod 10)}\\
+	& \equiv 2^4 \text{ (mod 10)}\\
+	& \equiv 6 \text{ (mod 10)}\\
+\end{align*}
+Combining we have
+\begin{align*}
+	2016^{2016} = (2^3)^{2016} \cdot (6)^{2016} \cdot (42)^{2016} & \equiv 6 \cdot 6 \cdot 6 \text{ (mod 10)} \\
+	& \equiv 6^3 \text{ (mod 10)} \\
+	& \equiv 6 \text{ (mod 10)} \\
+\end{align*}
+Thus the last digit of $2016^{2016}$ is 6.
+
+
+
+\section*{Question 7}
+
+\begin{enumerate}[ (a)]
+	\item If $x$ and $y$ are both irrational, then $x+y$ is irrational.
+	\begin{proof}
+		Since $\sqrt{2} - \sqrt{2} = 0$, which is a rational sum, then $x=\sqrt{2}$ and $y=-\sqrt{2}$ is a counterexample.
+	\end{proof}
+	
+	\item If $x$ and $y$ are both irrational, then $xy$ is irrational.
+	\begin{proof}
+		Since $\sqrt{2} \cdot \sqrt{2} = 2$, which is a rational product, then $x=y=\sqrt{2}$ is a counterexample.
+	\end{proof}
+	
+	\item If $x$ is rational and $y$ is irrational, then $xy$ is irrational.
+	\begin{proof}
+		Since $0 \cdot y = 0$, which is a rational product, then $x=0$ and $y$ any irrational number is a counterexample.
+	\end{proof}
+	
+	
+	\item If $x\neq0$ is rational and $y$ is irrational, then $xy$ is irrational.
+	\begin{proof}
+		Assume, to the contrary, that there exists a rational $x$ and an irrational $y$ whose product $xy$ is rational. Then there exists integers $a,b,c,d$ where $b,c,d \neq 0$, such that $xy=\frac{a}{b}$ and $x=\frac{c}{d}$. This implies that
+		\begin{align*}
+			xy & = \frac{a}{b} \\
+			\frac{c}{d} \cdot y & = \frac{a}{b} \\
+			y & = \frac{ad}{bc} \\
+		\end{align*}
+		Since $ad$ and $bc$ are integers and $bc\neq 0$, it follows that $y$ is rational, which is a contradiction.
+	\end{proof}
+	
+	\item If $a,b \in \mathbb{Q}$ and $ab \neq 0$, then $a\sqrt{3} + b\sqrt{2}$ is irrational.
+	\begin{proof}
+		Assume, to the contrary, that we have rational numbers $a$ and $b$ where $ab \neq 0$ and $a\sqrt{3} + b\sqrt{2}$ is rational. Then there exists rational integers $c$ and $d$ such that
+		$$a\sqrt{3} + b\sqrt{2} = \frac{c}{d}$$
+		Squaring both sides and simplifying gives us
+		\begin{align*}
+			3a^2 + 2ab\sqrt{6} + 2b^2 & = \frac{c^2}{d^2} \\
+			2ab\sqrt{6} & = \frac{c^2}{d^2} - 3a^2 -2b^2 \\
+			2ab \sqrt{6} & = \frac{c^2-3a^2d^2-2b^2d^2}{d^2} \\
+			\sqrt{6} & = \frac{c^2-3a^2d^2-2b^2d^2}{2abd^2}
+		\end{align*}
+		Since $c^2-3a^2d^2-2b^2d^2$ and $2abd^2$ are integers and $ab \neq 0$, it follows that $\sqrt{6}$ is rational. However, we know by Question 1 that $\sqrt{6}$ is irrational, thus giving us the necessary contradiction.
+	\end{proof}
+	
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document} 
