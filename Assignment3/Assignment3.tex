@@ -1,0 +1,400 @@
+% ======================= Pre-Amble =========================
+
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format 
+                     						%imports package {article} and specify option(s) [11pt, oneside]
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.                                        
+
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for rotated page geometry
+
+\usepackage[parfill]{parskip}    		        % Activate to begin paragraphs with an empty line rather than an indent
+
+\usepackage[hidelinks]{hyperref}                % Allows for clickable references
+
+%American Mathematics Society packages
+\usepackage{amsmath}	   %math
+\usepackage{amssymb}       %symbols
+\usepackage{amsthm}          %theorems
+
+%Graphics
+\usepackage{graphicx}
+\usepackage[usenames, dvipsnames]{color}     % font colour:    \textcolor{<colour>}{text}
+      									%highlight text:  \colorbox{<color>}{text}
+\usepackage{soul}						%highlight text: \hl{}     %only  yellow			
+									
+									%list of colours: https://www.sharelatex.com/learn/Using_colours_in_LaTeX
+
+%Images		                
+\graphicspath{ {images/} }                          %directory that your images are located in within your current directory
+	
+
+%Footnote Spacing
+\setlength{\footnotesep}{0.4cm}                  %specify spacing b/w footnotes
+\setlength{\skip\footins}{0.6cm}                    % space b/w footnotes and textbody
+
+%Table
+\usepackage[none]{hyphenat}                    % Stops breaking-up words in a table (i.e. no hyphens)
+                                                               
+
+\usepackage{array}   
+\newcolumntype{x}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}       %center fixed column width: x{<len>}                      
+\newcolumntype{$}{>{\global\let\currentrowstyle\relax}}                                                   % let us apply things (e.g. bold/italicize) to entire row            
+\newcolumntype{^}{>{\currentrowstyle}}
+\newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1} #1\ignorespaces}
+
+%Bibliography
+\usepackage[numbers,sort&compress]{natbib}   %for multiple references: sorts  (i.e. [1,2] NOT [2, 1] )
+                                           				  %                                     compresses (i.e. [1-3] )
+\usepackage[nottoc]{tocbibind}                            %add bibliography to table of contents
+
+%Diagrams
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,backgrounds}
+	
+
+\usepackage{dirtytalk}    %quotations: use \say{}  
+
+\usepackage{caption}
+\captionsetup[figure]{labelfont=bf}    %make figure labels boldface
+\captionsetup[table]{labelfont=bf}     %make table labels boldface
+
+\usepackage{pgfplots}       %graph in cartesian
+
+%Bullets
+\usepackage{enumerate}     %specify type of enumeration: \being{enumerate}[<type of enumeration>]
+
+%QED
+\newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}         %make qed filled square:    \QEDA
+%\newcommand*{\QEDB}{\hfill\ensuremath{\square}}               %make qed empty square: \QEDB 
+
+%Header and Footer
+\usepackage{fancyhdr}
+\usepackage{lastpage}      %ensures you can reference LastPage (i.e. Page 2 of 10)
+
+
+%=========== Header & Footer =========================
+
+\pagestyle{fancy}
+\lhead{Stephanie Knill} 		% controls the left corner of the header
+\chead{} 					% controls the center of the header
+\rhead{} 					% controls the right corner of the header
+\lfoot{} 					% controls the left corner of the footer
+\cfoot{Page~\thepage\ of \pageref{LastPage}} 				% controls the center of the footer
+												%Page~\thepage\  if just want Page x
+\rfoot{}			 		% controls the right corner of the footer
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% ======================== Document ======================
+\begin{document}
+
+
+\title{MATH 220 --- Assignment 3 \\
+\line(1,0){360} }             %(slope x, y){length of line}
+
+\author{
+Stephanie Knill \\
+54882113 \\
+Due: January 28, 2015}
+
+\date{}                   % Activate:  display a given date (e.g. {August 4} ) or no date (empty {} )
+                                    %No activate: display current date
+\maketitle
+
+\thispagestyle{empty}                   %Remove header from this (first) page. Change empty -> plain to keep numbering
+
+
+% ================= Questions ================
+
+\section*{Question 1}
+
+Let $A = \{1,4,7,10,13,16, \ldots\}$, $B = \{x \in \mathbb{Z} : x \text{ is odd}\}$, $C = \{x \in \mathbb{Z} : x \text{ is prime and } x \neq 2\}$, and $D=\{1,2,3,5,8,13,21,34,55, \ldots \}$.
+
+\begin{enumerate}[ (a)]           
+    \item $25 \in A$
+    
+   \textbf{True:} \say{The number 25 is a member of the set $A$.}
+    
+    \item $22 \in A \cup D$
+    
+    \textbf{True:} \say{The number 22 is a member of the set given by the union of the sets $A$ and $D$.}
+    
+    \item $C \subseteq B$
+    
+    \textbf{True:} \say{The set $C$ is a subset of the set $B$}
+    
+    \item $\emptyset \in B \cup D$
+    
+    \textbf{False:} \say{The empty set is a member of the set given by the union of the sets $B$ and $D$.}
+    
+    Although the empty set is a \textit{subset} of every set, the empty set is an \textit{element} of a set only if the set contains the empty set as one of its elements. Here, the union of the sets $B$ and $D$ does not have the empty set as one of its elements. Thus the above statement is false.
+    
+\end{enumerate}
+
+
+\section*{Question 2}
+
+For the open sentence $P(A) : A \subseteq \{1,2,3\}$ over the domain $S = \mathcal{P}(\{1,2,4\})$, we can determine
+
+\begin{enumerate}[ (a)]           
+    \item all $A \in S$ for which $P(A)$ is true
+    
+    Let $B$ be the set of all $A \in S$ for which $P(A)$ is true. Since $S = \mathcal{P}(\{1,2,4\}) =\{ \emptyset, \{1\}, \{2\}, \{4\}, \{1, 2\}, \{1, 4\}, \{2, 4\}, \{1, 2, 4\} \}$ and $A \subseteq \{1,2,3\}$, then there are 4 possible sets $A \in S$ for which $P(A)$ holds true: 
+    $$B = \{\emptyset, \{1\}, \{2\}, \{1, 2\} \}$$
+    
+    \item all $A \in S$ for which $P(A)$ is false
+    
+   Let $B'$ be the set of all $A \in S$ for which $P(A)$ is false. Then the sets $A \in S$ for which $P(A)$ is false are the remaining 4 sets in the power set $\mathcal{P}(\{1,2,4\})$ that were not used in part (a). Thus $B'$ is given by
+   $$B' =  \{ \{4\},\{1,4\}, \{2,4\}, \{1, 2, 4\} \}$$
+    
+    \item Let W be the set of all $A \in S$ for which $A \cap \{1,2,3\} = \emptyset$. List all the elements of $W$. Then find the intersection of $W$ with the set of all $A \in S$ for which $P(A)$ is true.  
+    
+    Since $A$ cannot contain the elements 1 or 2, then $W = \{ \emptyset, \{4\} \}$. The intersection of $W$ and all the sets of  $A \in S$ for which $P(A)$ is true is given by
+    \begin{align*}
+    W \cap B & = \{ \emptyset, \{4\} \} \cap \{\emptyset, \{1\}, \{2\}, \{1, 2\} \} \\
+    & = \{\emptyset\}
+    \end{align*}
+        
+\end{enumerate}
+
+\section*{Question 3}
+
+\begin{enumerate}[ (a)]    
+
+\item $P(x)$: At least two of my library books are overdue.
+
+$\sim P(x)$: Less than two of my library books are overdue.
+\item $P(x)$: One of my two friends misplaced his homework assignment.
+
+$\sim P(x)$: One of my two friends did not misplace his homework assignment.
+\item $P(x)$:  No one expected that to happen.
+
+$\sim P(x)$: At least one person expected that to happen.
+\item $P(x)$:  It's not often that my instructor teaches that course.
+
+$\sim P(x)$: It is often that my instructor teaches that course.
+\item $P(x)$:  It's surprising that two students received the same exam score.
+
+$\sim P(x)$: It is not surprising that two students received the same exam score.
+
+\end{enumerate}
+
+\section*{Question 4}
+
+For the sets $A = \{1,2, \ldots, 10\}$ and $B = \{2, 4, 6, 9, 12, 25\}$, then the truth values of the statements 
+$$P : A \subseteq B. \quad \text{and} \quad Q: |A-B| = 6$$
+
+can be computed. Since $3 \in A$ and $3 \notin B$, then $P$ is \textbf{false}. The set $A - B$ can be rewritten in Set-Builder Notation as
+$$A-B = \{1,3,5,7,8,10\}.$$
+Here, we can see that the cardinality $|A - B| = 6$, thus making statement $Q$ \textbf{true}. With this knowledge, we can now compute the truth value for the following statements:
+
+\begin{enumerate}[ (a)]    
+
+	\item $P \lor Q$: \textbf{True}
+	
+	\item $P \; \lor \sim Q$: \textbf{False}
+	\item $ P \land Q$: \textbf{False}
+	\item $(\sim P) \land Q$: \textbf{True}
+	\item $(\sim P) \lor (\sim Q)$: \textbf{True}
+
+\end{enumerate}
+
+\cleardoublepage
+
+\section*{Question 5}
+
+Since the truth table for the statement $P \wedge (Q \vee R)$ (Table \ref{tab:LHS}) 
+
+\begin{table}[h]                                           %optional argument: place figure/table here (h), top (t), page of floats (p)
+\begin{center}
+\begin{tabular}{c c c | c || c}                                % \begin{tabular}{width}[pos]{cols}: specify #columns in table
+   								% each column entry: indicate by align left (l), align center (c), align right (r)
+								% vertical bar for cell separation (|)						
+    $P$ & $Q$ & $R$ & $Q \vee R$ & $P \vee (Q \wedge R)$  \\
+    \hline
+    T & T & T & T & \textbf{T} \\
+    T & F & T & T & \textbf{T} \\
+    F & T & T & T & \textbf{F} \\
+    F & F & T & T & \textbf{F} \\
+    T & T & F & T & \textbf{T} \\
+    T & F & F & F & \textbf{F} \\
+    F & T & F & T & \textbf{F} \\
+    F & F & F & F & \textbf{F} \\       					          
+\end{tabular}
+\end{center}
+
+\caption{Truth table for the statement $P \wedge (Q \vee R)$.}
+\label{tab:LHS} 
+\end{table}
+
+and the truth table for the statement $(P \wedge Q) \vee (P \wedge R)$ (Table \ref{tab:RHS}) 
+
+\begin{table}[h]                                           %optional argument: place figure/table here (h), top (t), page of floats (p)
+\begin{center}
+\begin{tabular}{c c c | c c || c}                                % \begin{tabular}{width}[pos]{cols}: specify #columns in table
+   								% each column entry: indicate by align left (l), align center (c), align right (r)
+								% vertical bar for cell separation (|)						
+    $P$ & $Q$ & $R$ & $P \wedge Q$ & $P \wedge R$ & $(P \wedge Q) \vee (P \wedge R)$  \\
+    \hline
+    T & T & T & T & T & \textbf{T} \\
+    T & F & T & F & T & \textbf{T} \\
+    F & T & T & F & F & \textbf{F} \\
+    F & F & T & F & F & \textbf{F} \\
+    T & T & F & T & F & \textbf{T} \\
+    T & F & F & F & F & \textbf{F} \\
+    F & T & F & F & F & \textbf{F} \\
+    F & F & F & F & F & \textbf{F} \\       					          
+\end{tabular}
+\end{center}
+
+\caption{Truth table for the statement $(P \wedge Q) \vee (P \wedge R)$.}
+\label{tab:RHS} 
+\end{table}
+
+are equivalent, we can conclude that the distributive law $P \wedge (Q \vee R) \equiv (P \wedge Q) \vee (P \wedge R)$ holds true for all statements $P, Q,$ and $R$. \QEDA
+
+\cleardoublepage
+
+\section*{Question 6}
+
+For the statements $P$ and $Q$, we can construct a truth table for the statement $(P \Rightarrow Q) \Rightarrow (\sim P)$ (Table \ref{tab:bleh}):
+
+\begin{table}[h]                                           %optional argument: place figure/table here (h), top (t), page of floats (p)
+\begin{center}
+\begin{tabular}{c c | c  c || c}                                % \begin{tabular}{width}[pos]{cols}: specify #columns in table
+   								% each column entry: indicate by align left (l), align center (c), align right (r)
+								% vertical bar for cell separation (|)						
+    $P$ & $Q$ & $P \Rightarrow Q$ & $\sim P$ & $(P \Rightarrow Q) \Rightarrow (\sim P)$ \\
+    \hline
+    T & T & T & F & \textbf{F} \\
+    T & F & F & F & \textbf{T} \\
+    F & T & T & T & \textbf{T} \\
+    F & F & T & T & \textbf{T} \\   					          
+\end{tabular}
+\end{center}
+
+\caption{Truth table for the statement $(P \Rightarrow Q) \Rightarrow (\sim P)$.}
+\label{tab:bleh} 
+\end{table}
+
+
+\section*{Question 7}
+
+Let the sets $A$ and $B$ be non-empty disjoint subsets of a set $S$. If $x \in S$, then we can find the truth value of the following statements:
+
+\begin{enumerate}[ (a)]    
+
+    \item It is possible that $x \in A \cap B$.
+    
+    \textbf{True:} Even though $A \cap B = \emptyset$, the empty set could be an element of the set $S$. Thus if $x = \emptyset$, then $x \in A \cap B$ (note that although $A$ and $B$ are non-empty sets, they still have an intersection of the empty set).
+    
+    \item If $x$ is an element of $A$, then $x$ can't be an element of $B$.
+    
+    \textbf{True:} By definition of disjoint non-empty sets, if an element is in $A$, then that same element cannot be in $B$.
+    
+    \item If $x$ is not an element of $A$, then $x$ must be an element of $B$.
+    
+    \textbf{False:} Let $S$ be the set of Integers, $A$ the set of even Natural Numbers, $B$ the set of odd Natural Numbers, and let $x = -5$. Although $A \subseteq S$ and $B \subseteq S$, we have that $x \notin A$ and $x \notin B$.
+    
+    \item It's possible that $x \notin A$ and $x \notin B$.
+    
+    \textbf{True:} By similar logic of part (c), even if $x \in S$, we may have $x \notin A, B$.
+    
+    \item For each nonempty set $C$, either $x \in A \cap C$ or $x \in B \cap C$.
+    
+    \textbf{False:} Let $S$ be the set of Integers, $A$ the set of even Natural Numbers, $B$ the set of odd Natural Numbers, and let $x = -5$. Although $A \subseteq S$ and $B \subseteq S$, we have that $x \notin A$ and $x \notin B$. Then for every non-empty set, $x \notin A \cap C$ and $x \notin B \cap C$
+    
+    \item There exists a nonempty set $C$, such that both $x \in A \cup C$ and $x \in B \cup C$. 
+    
+    \textbf{True:} Since $x \in C$ for every $x$, then $x \in A \cup C$ and $x \in B \cup C$.
+
+\end{enumerate}
+
+
+\section*{Question 8}
+
+Let $P(x)$ be \say{\textit{Bill takes Sam to the concert.}} and $Q(x)$ be \say{\textit{Sam will take Bill to dinner.}} Then the statement \say{\textit{If Bill takes Sam to the concert, then Sam will take Bill to dinner.}}, can be expressed as
+$$P(x) \Rightarrow Q(x).$$
+
+For this implication statement, it will always be True if $Q(x)$ is True. Similarly it will always be False if $P(x)$ is False. Using this knowledge, the following statements will either imply that $P(x) \Rightarrow Q(x)$ is true or false:
+
+\begin{enumerate}[ (a)]    
+
+    \item \textit{Sam takes Bill to dinner only if Bill takes Sam to the concert.}
+    
+    Here, we can rewrite this statement as $P(x) \Rightarrow Q(x)$. Since these are the same statements, this would imply that the statement $P(x) \Rightarrow Q(x)$ is \textbf{True}.
+    
+    \item \textit{Either Bill doesn't take Sam to the concert or Sam takes Bill to dinner.}
+    
+    Here, the statement can be rewritten as $\sim P(x) \; \vee \; Q(x)$. Assuming that this statement is True, then we have 3 cases:
+   
+    \begin{itemize}
+    \item \textbf{Case 1:} $\sim P(x)$ is True and $Q(x)$ is False.
+    
+    Since $P(x)$ is False and $Q(x)$ is False, then the implication statement $P(x) \Rightarrow Q(x)$ is \textbf{True}.
+    
+    \item \textbf{Case 2:} $\sim P(x)$ is False and $Q(x)$ is True.
+    
+    Since $P(x) $ is True and $Q(x)$ is True, then the implication statement $P(x) \Rightarrow Q(x)$ is \textbf{True}.
+    
+    \item \textbf{Case 3:} $\sim P(x)$ is True and $Q(x)$ is True.
+    
+    Since $P(x) $ is False and $Q(x)$ is True, then the implication statement $P(x) \Rightarrow Q(x)$ is \textbf{True}.
+    \end{itemize}
+    
+    Thus we can conclude that the statement $P(x) \Rightarrow Q(x)$ is always \textbf{True} when $\sim P(x) \vee Q(x)$ is True.
+    
+    \item \textit{Bill takes Sam to the concert.}
+    
+    Here, the statement $P(x)$ is True. Thus the implication statement $P(x) \Rightarrow Q(x)$ will be \textbf{True} if $Q(x)$ is True and \textbf{False} if $Q(x)$ is False.
+    
+    \item \textit{Bill takes Sam to the concert and Sam takes Bill to dinner.}
+    
+    Here, we can express this statement as $P(x) \wedge Q(x)$, which means that both $P(x)$ and $Q(x)$ are True. Therefore $P(x) \Rightarrow Q(x)$ is \textbf{True}.
+    
+    \item \textit{Bill takes Sam to the concert and Sam doesn't take Bill to dinner.}
+    
+    Here, we can express the statement as $P(x) \; \wedge \sim Q(x)$, which means that $P(x)$ is True and $Q(x)$ is False. Thus $P(x) \Rightarrow Q(x)$ is \textbf{False}.
+    
+    \item \textit{The concert is canceled.}
+    
+    Since the concert is cancelled, then Bill could not have taken Sam to the concert. Thus, $P(x)$ is False. Regardless of the truth value of $Q(x)$, we can conclude that the implication statement $P(x) \Rightarrow Q(x)$ is \textbf{True}.
+    
+    \item \textit{Sam doesn't attend the concert.}
+    
+    Similar to (f), $P(x)$ is False. Thus we can again conclude that $P(x) \Rightarrow Q(x)$ is \textbf{True}.
+
+\end{enumerate}
+
+
+\section*{Question 9}
+
+For the open sentences $P(n) : 5n + 3$ is prime, and $Q(n) : 7n+1$ is prime, both over the domain $\mathbb{N}$:
+
+\begin{enumerate}[ (a)]    
+
+    \item The implication statement $P(n) \Rightarrow Q(n)$ can be expressed in words as \say{If $5n+3$ is prime, then $7n+1$ is prime, for all $n$ in the set of Natural Numbers}.
+    \item The implication statement $P(2) \Rightarrow Q(2)$ can be expressed in words as \say{If 13 is prime, then 15 is prime}. Since $P(2)$ is True and $Q(2)$ is False, then the statement $P(2) \Rightarrow Q(2)$ is \textbf{False}.
+    \item The implication statement $P(6) \Rightarrow Q(6)$ can be expressed in words as \say{If 33 is prime, then 43 is prime}. Since $P(6)$ is False and $Q(6)$ is True, then the statement $P(6) \Rightarrow Q(6)$ is \textbf{True}.
+
+\end{enumerate}
+
+
+\section*{Question 10}
+
+Let the statements $P$ be \say{\textit{The fish are biting}}, $Q$ be \say{\textit{There are no bugs}}, and $R$ be \say{\textit{It is winter}}. Thus we can express the statement \say{\textit{The fish are biting and there are no bugs, or the fish are not biting and there are bugs, or it is winter}} as
+$$(P \; \wedge \sim Q) \vee (\sim P \wedge Q) \vee R.$$
+
+Thus the negation is given by
+
+\begin{align*}
+\sim ((P \; \wedge \sim Q) \vee (\sim P \wedge Q) \vee R)) & = \; \sim(P \; \wedge \sim Q) \; \wedge \sim(\sim P \wedge Q) \; \wedge \sim R \\
+& = (\sim P \vee Q) \wedge (P \; \vee \sim Q) \; \wedge \sim R \\
+\end{align*}
+
+Converting back to words, we can express this as \say{\textit{The fish are not biting or there are bugs, and the fish are biting or there are no bugs, and it is not winter.}}
+
+
+
+\end{document} 
