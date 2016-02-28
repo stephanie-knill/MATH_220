@@ -1,2 +1,2 @@
 # MATH_220
-Mathematical Proof
+Mathematical Proof (Jan. - Apr. 2016)
