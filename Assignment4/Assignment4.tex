@@ -1,0 +1,425 @@
+% ======================= Pre-Amble =========================
+      
+%Format
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format 
+                     						%imports package {article} and specify option(s) [11pt, oneside]
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots. 
+    \geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+    %\geometry{landscape}                		% Activate for rotated page geometry
+
+\usepackage[parfill]{parskip}    		        % Activate to begin paragraphs with an empty line rather than an indent
+
+    %Colours
+    \usepackage{graphicx, subcaption}
+    \usepackage[usenames, dvipsnames]{color}     % font colour:    \textcolor{<colour>}{text}
+          									%highlight text:  \colorbox{<color>}{text}
+    \usepackage{soul}						%highlight text: \hl{}     %only  yellow								
+    									%list of colours: https://www.sharelatex.com/learn/Using_colours_in_LaTeX
+    									
+    %Bullets
+    \usepackage{enumerate}     %specify type of enumeration: \being{enumerate}[<type of enumeration>]
+    
+    %Footnote Spacing
+    \setlength{\footnotesep}{0.4cm}                  %specify spacing b/w footnotes
+    \setlength{\skip\footins}{0.6cm}                    % space b/w footnotes and textbody
+
+
+%Mattematics
+    %American Mathematics Society packages
+    \usepackage{amsmath}	   %math
+    \usepackage{amssymb}       %symbols
+    \usepackage{amsthm}          %theorems
+
+    %QED
+    \newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}         %make qed filled square:    \QEDA
+    %\newcommand*{\QEDB}{\hfill\ensuremath{\square}}               %make qed empty square: \QEDB 
+
+
+%Figures
+\usepackage{caption}
+\captionsetup[figure]{labelfont=bf}    %make figure labels boldface
+\captionsetup[table]{labelfont=bf}     %make table labels boldface
+
+\usepackage[hidelinks]{hyperref}                % Allows for clickable references
+
+    %Tables
+    \usepackage[none]{hyphenat}                    % Stops breaking-up words in a table (i.e. no hyphens)                                                             
+    
+    \usepackage{array}   
+    \newcolumntype{x}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}       %center fixed column width: x{<len>}                      
+    \newcolumntype{$}{>{\global\let\currentrowstyle\relax}}                                                   % let us apply things (e.g. bold/italicize) to entire row            
+    \newcolumntype{^}{>{\currentrowstyle}}
+    \newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1} #1\ignorespaces}
+    
+    %Images
+    \graphicspath{ {images/} }                          %directory that your images are located in within your current directory
+    
+    %Diagrams
+    \usepackage[latin1]{inputenc}
+    \usepackage{tikz}
+    \usepackage{tkz-berge}
+    \usetikzlibrary{shapes,arrows}
+
+
+%Bibliography
+\usepackage[numbers,sort&compress]{natbib}   %for multiple references: sorts  (i.e. [1,2] NOT [2, 1] )
+                                           				  %                                     compresses (i.e. [1-3] )
+\usepackage[nottoc]{tocbibind}                            %add bibliography to table of contents
+
+
+%Miscellaneous
+\usepackage{dirtytalk}    %quotations: use \say  
+
+
+
+%=========== Header & Footer =========================
+\usepackage{fancyhdr}
+\usepackage{lastpage}      %ensures you can reference LastPage (i.e. Page 2 of 10)
+
+\renewcommand{\headrulewidth}{0.4pt}		%Decorative Header line: thickness={0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}		%Decorative Footer line: thickness={0.4pt}
+
+\setlength{\headheight}{13.6pt} 		%space b/w top of page & header
+\setlength{\headsep}{0.3in}		%space b/w page header and body
+
+%Make Header & Footer    
+\pagestyle{fancy}
+    \lhead{Stephanie Knill} 		% controls the left corner of the header
+    \chead{} 					% controls the center of the header
+    \rhead{} 					% controls the right corner of the header
+    \lfoot{} 					% controls the left corner of the footer
+    \cfoot{Page~\thepage\ of \pageref{LastPage}} 				% controls the center of the footer
+    												%Page~\thepage\  if just want Page x
+    \rfoot{}			 		% controls the right corner of the footer
+
+% ======================== Document ======================
+\begin{document}
+
+% Title Page
+\title{MATH 220 --- Assignment 4 \\
+\line(1,0){360} \\              %(slope x, y){length of line}
+}
+\author{
+Stephanie Knill \\
+54882113 \\
+Due: February 2, 2016}
+
+\date{}                   % Activate:  display a given date (e.g. {August 4} ) or no date (empty {} )
+                                    %No activate: display current date
+\maketitle
+
+%\thispagestyle{empty}                   %Remove header from this (first) page. Change empty -> plain to keep numbering
+%								-> Doesn't matter in this case (b/c title page)
+%\cleardoublepage
+
+
+% ================= Questions ================
+
+\section*{Question 1}
+
+\begin{enumerate}[ (a)]           
+    \item For ever rational number $r$, the number $1/r$ is rational.
+    
+    $P: \; \forall r \in \mathbb{Q}, \; 1/r$ is rational.
+    
+    $\sim P: \; \exists r \in \mathbb{Q} \; :  \; 1/r$ is irrational. 
+    
+    \item There exists a rational number $r$ such that $r^2=2$.
+    
+    $P: \; \exists r \in \mathbb{Q} \; : \; r^2 =2.$
+    
+    $\sim P: \; \forall r \in \mathbb{Q}, \; r^2 \neq 2.$
+\end{enumerate}
+
+
+\section*{Question 2}
+
+Let $P$ be the statement \say{$\forall x \in \mathbb{R} \; \exists y \in \mathbb{R}, \; y^2 = x$}.
+
+\begin{enumerate}[ (a)]           
+    \item In words: \say{For all real numbers $x$, there exists a real number $y$ such that $y^2=x$}   
+    \item This statement $P$ is \textbf{True}.
+    \item $\sim P: \; \exists x \in \mathbb{R} \; \forall{y} \in \mathbb{R}, \; y^2 \neq x$
+        
+\end{enumerate}
+
+\section*{Question 3}
+
+\begin{enumerate}[ (a)]    
+
+	\item $\exists x \in \mathbb{R}, x^2-x=0$
+	
+	\textbf{True:} $x=0, 1$
+	
+	\item $\forall x \in \mathbb{R}, \sqrt{x^2} = x$
+	
+	\textbf{True}
+	
+	\item $\exists x \in \mathbb{R}, \exists y \in \mathbb{R}, x+y+3=8$
+	
+	\textbf{True:} $x=0$ and  $y=5$.
+	
+	\item $\forall x,y \in \mathbb{R}, x+y+3=8$
+	
+	\textbf{False:} $x = y = 0$.
+	
+	\item$\forall x \in \mathbb{R}, \exists y \in \mathbb{R}, x+y+3=8$
+	
+	\textbf{True:} $y = 5-x$
+	
+	\item $\exists x \in \mathbb{R}, \forall y \in \mathbb{R}, x+y+3 =8$
+	
+	\textbf{True:} $x = 5-y$
+	
+	\item $\exists m,n \in \mathbb{N}, n^2+m^2 =25$
+	
+	\textbf{True:} $m=3, n=4$
+	
+	\item $\forall m \in \mathbb{N}, \exists n \in \mathbb{N}, n^2+m^2=25$
+	
+	\textbf{False:} $m=100$
+
+\end{enumerate}
+
+\section*{Question 4}
+
+Let $P(x)$ and $Q(x)$ be open sentences where the domain of the variable $x$ is a set $S$. Then which of the following implies $\sim P(x) \Rightarrow Q(x)$ is false for some $x \in S$ ?
+
+If $P(x)$ is False and $Q(x)$ is False, then $\sim P(x) \Rightarrow Q(x)$ is False. Thus, for the following:
+
+\begin{enumerate}[ (a)]    
+
+	\item $P(x) \land Q(x)$ is false for all $x \in S$: \textbf{does imply False}.
+	
+	Here, we have 3 cases for the truth values of $P(x)$ and $Q(x)$: 
+	\begin{enumerate}[\qquad 1.]
+		\item Both $P(x)$ and $Q(x)$ are False
+		\item $P(x)$ is True and $Q(x)$ is False
+		\item $P(x)$ is False and $Q(x)$ is True
+	\end{enumerate}	
+	
+	Since the first case would make $\sim P(x) \Rightarrow Q(x)$ False, then  \say{$P(x) \land Q(x)$ is false for all $x \in S$} implies that $\sim P(x) \Rightarrow Q(x)$ is False for some $x \in S$.
+	
+	\item $P(x)$ is true for all $x \in S$: \textbf{does not imply False.}
+	
+	Since $P(x)$ always True, then $\sim P(x) \Rightarrow Q(x)$ can never be False.
+	
+	\item $Q(x)$ is true for all $x \in S$: \textbf{does not imply False.}
+	
+	Since $Q(x)$ always True, then $\sim P(x) \Rightarrow Q(x)$ can never be False.
+	
+	\item $P(x) \lor Q(x)$ is false for all $x \in S$: \textbf{does imply False.}
+	
+	Here both $P(x)$ and $Q(x)$ are False, therefore implying that $\sim P(x) \Rightarrow Q(x)$ is False.
+\end{enumerate}
+
+
+\section*{Question 5}
+
+Let $S=[1,2]$ and $T=(3, \infty)$.
+
+\begin{enumerate}[ (a)]    
+	\item $\exists x \in S$ s.t. $\exists y \in T$ s.t. $|x-y|> 3$: \say{There exists an $x$ in the set $S$ such that there exists a $y$ in the set $T$ such that $|x-y| > 3$.}
+	
+	\textbf{Proof:} Let $x=1$ and $y=100$. Since the inequality
+	$$3 < |1-100| = |-99| = 99$$
+	holds true, then statement is also true. \QEDA
+	
+	\item $\exists x \in S$ s.t. $\forall y \in T, |x-y| > 3$: \say{There exists an $x$ in the set $S$ such that for all $y$ in the set $T$, $|x-y| > 3$.}
+	
+	\textbf{Proof:} Let $x=1$. Then the inequality can be expressed as
+	$$3 < |1-y| = 1+ |-y| $$
+	and we have that $|y| > 2$. Since $y \in T$, then $y > 3$. Therefore the statement holds true. \QEDA
+	
+	\item $\forall x \in S, \exists y \in T$, s.t. $|x-y| > 3$: \say{For all $x$ in the set $S$, there exists a $y$ in the set $T$ such that $|x-y| > 3$.}
+	
+	\textbf{Proof:} Let $y=100$. Then the inequality can be expressed as
+	$$3 < |x-100| = |x| + 100 $$
+	and we have that $|x| > -97$. Since $x \in T=[1,2]$, then the inequality holds true for all $x$. \QEDA
+	
+	\item $\forall x \in S, \forall y \in T, |x-y| > 3$: \say{For all $x$ in the set $S$ and for all $y$ in the set $T$, $|x-y| > 3$.}
+	
+	\textbf{Proof:} We can express the inequality as
+	\begin{align*}
+		|x-y| & > 3 \\
+		|x| + |-y| & > 3 \\
+		|x| + |y| & > 3 \\
+	\end{align*}
+	Since $x \in S =[1,2]$ and $y \in T=(3, \infty)$, then $|x| \geq 1$ and $|y| > 3$. Thus
+	$$|x| + |y| > 1+3 > 3$$
+	and the inequality holds true for all $x$ and $y$. \QEDA
+
+\end{enumerate}
+
+\section*{Question 6}
+
+Let $I=\{n^2 | n \in \mathbb{Z} \}$. Let $P$ be the statement
+$$\bigcup_{k \in I} [k,2k]= \mathbb{R}.$$
+
+\begin{enumerate}[ (a)]    
+	\item Expressing $P(x)$ using quantifiers, we have
+	\begin{align*}
+		\bigcup_{k \in I} [k,2k] & = \{x : \exists k \in I \text{ s.t. } x \in [k, 2k] \} = \mathbb{R} \\
+		& = \{x  : \forall x \in \mathbb{R}, \; \exists k \in I \text{ s.t. } x \in [k, 2k] \} \\
+		& = \{x : \forall x \in \mathbb{R}, \exists n \in \mathbb{Z} \text{ s.t. } x \in [n^2, 2n^2] \}
+	\end{align*}
+	
+	\item $P(x)$: \textbf{False}
+	
+	\textbf{Proof:} Using Roster Notation, let us re-express the set $I$ as
+	$$I = \{0,1,4,9,16,26, \ldots \}.$$
+	Then the statement $P$ is given by
+	$$\bigcup_{k \in I} [k,2k] = [0,0] \cup [1,2] \cup [4,8] \cup [9,18] \cup \cdots $$
+	which is not equivalent to the set of real numbers $\mathbb{R}$. \QEDA
+\end{enumerate}
+
+
+\section*{Question 7}
+
+Let $A=\{x \mid \forall n \geq 3, \; 1/n < x < 1 - 1/n \}.$
+
+\begin{enumerate}[ (a)]    
+
+    \item Let $I=\{n \in \mathbb{N} : n \geq 3 \}$ and $A_n = (1/n, \; 1-1/n)$. Then the set $A$ can be represented as an intersection of an indexed collection of sets:
+    \begin{align*}
+    	A & = \bigcap_{n = 3}^{\infty} \Big(\frac{1}{n}, \; 1- \frac{1}{n}\Big) \\
+	& = \bigcap_{n \in I} A_n
+    \end{align*}
+
+    
+    \item We can also express the set $A$ as an interval in $\mathbb{R}$: $A = (0, 1)$ or equivalently, $A= ] 0, 1 [$.
+\end{enumerate}
+
+
+\section*{Question 8}
+
+For the two statements
+\begin{itemize}
+	\item Among the inhabitants of QE220 who can watch TV, not all have antennae on their head.
+	\item The inhabitants of QE220 that are green and do not have antennae, cannot watch TV.
+\end{itemize}
+
+we will express them using quantifiers. For the universal set $\Omega$ of inhabitants of the planet QE220, let $T, A,$ and $G$ be subsets of $\Omega$ such that $T$ is the set that can watch TV, $A$ the set that have an antennae on their head, and $G$ the set that are green. Then we can express the two statements as
+
+\begin{itemize}
+	\item Statement 1: If $x \in T,$ then $\exists x \notin A$.
+	\item Statement 2: If $y \in (G \cap \overline{A}),$ then $y \notin T$.
+\end{itemize}
+
+and the statement \say{not all the inhabitants of QE220 that can watch TV are green} that we want to determine the truth value of as
+\begin{itemize}
+	\item Statement 3: $\exists z \in T,$ such that $z \in G$.
+\end{itemize}
+
+Taking the contrapositive of Statement 2, we have that
+\begin{align*}
+	\text{If } y \in (G \cap \overline{A}), \text{ then } y \notin T & \equiv \text{If } y \in T, \text{then } y \notin (G \cap \overline{A})
+	%%& \equiv \text{If } y \in T, \text{then } y \in (\overline{G} \cup A)
+\end{align*}
+Thus for both Statement 1 and Statement 2, if an element is in $T$ then there is no information as to whether it is also in the set $G$. Therefore the statement \say{not all the inhabitants of QE220 that can watch TV are green} does not follow from the given two statements. \QEDA
+
+
+
+
+
+
+
+
+
+
+%This can be expressed as a Venn Diagram (Figure \ref{QE220}), where pink represents the known non-empty sets.
+%\begin{figure}[h]
+%\begin{center}
+%\begin{tikzpicture}
+%	\def\firstcircle{(0,0) circle (1)}		  				%Draw circle: (center x, center y) circle (radius) 
+%         \def\secondcircle{(1,0) circle (1)}
+%         \def\thirdcircle{(.5, 1) circle (1)}
+%         
+%          \fill[pink] \thirdcircle;
+%          \fill[white] \secondcircle;
+%
+%           
+%
+%           
+%            % outline & Labels
+%            \draw \firstcircle 
+%            	     (-1,0)  node [text=black,left] {$A$}    					%Label: (label x, label y) [specifiy colour, location]  {label text}
+%                      \secondcircle (2,0)  node [text=black,right] {$G$}                           
+%                      \thirdcircle (.5, 2) node [text=black,above] {$T$};
+%%\caption{HIII}
+%\end{tikzpicture}
+%\end{center}
+%\caption{Venn diagram of the sets $A, T,$ and $G$, where pink indicates a set that is known to be non empty.}
+%\label{QE220}
+%\end{figure}
+
+
+
+
+%\begin{figure}[h]
+%\begin{center}
+%\begin{tikzpicture}
+%            \def\firstcircle{(0,0) circle (1)}		  				%Draw circle: (center x, center y) circle (radius) 
+%            \def\secondcircle{(1,0) circle (1)}
+%            \def\thirdcircle{(.5, 1) circle (1)}
+%            \def\boundingbox{(-2, -1.5) rectangle (3, 2.75)}		 %Draw rectangle: (LB x, LB y) rectangle (UB x, UB y); LB & UB on diagonal from each other
+%           
+%            % fill rectangle
+%            \fill[pink] \boundingbox;
+%	   
+%	    %Intersect 1st & 3rd
+%            \begin{scope}
+%                \clip \boundingbox \thirdcircle;		%sample space
+%                \clip \firstcircle;					%crop this part out
+%                \fill[white] \secondcircle;			%fill this part in
+%            \end{scope}
+%            
+%            %Intersect 2nd & 3rd
+%            \begin{scope}
+%                \clip \boundingbox \firstcircle;
+%                \clip \thirdcircle;
+%                \fill[white] \secondcircle;
+%            \end{scope}
+%            
+%            %Intersect A \cap T^c
+%            \begin{scope}
+%                \clip \boundingbox \thirdcircle;
+%                %\clip \firstcircle;
+%                \fill[white] \firstcircle;				%fill this part in
+%            \end{scope}
+%
+%           
+%            % outline & Labels
+%            \draw \firstcircle 
+%            	     (-1,0)  node [text=black,left] {$A$}    					%Label: (label x, label y) [specifiy colour, location]  {label text}
+%                      \secondcircle (2,0)  node [text=black,right] {$G$}                           
+%                      \thirdcircle (.5, 2) node [text=black,above] {$T$}
+%                      \boundingbox (3,2.8) node [text=black,above] {$U$}; 
+%%\caption{HIII}
+%\end{tikzpicture}
+%\end{center}
+%\caption{Venn diagram of the sets $A, T,$ and $G$, where pink indicates a set that is known to be non empty.}
+%\label{QE220}
+%\end{figure}
+
+
+
+
+\section*{Question 9}
+
+\textbf{Proposition:} If $x$ is an odd integer, then $9x+5$ is even.
+
+\textbf{Proof:} Since $x$ is an odd integer, then there exists $k \in \mathbb{Z}$ such that
+\begin{align*}
+	x & = 2k+1 \\
+	9x & = 18k+9 \\
+	9x + 5 & = 18k + 9 + 5 \\
+	& = 18k+14 \\
+	& = 2(9k+7)
+\end{align*}
+
+Since $9k+7 \in \mathbb{Z}$, then $9x+5$ is even. \QEDA
+
+
+
+\end{document} 
