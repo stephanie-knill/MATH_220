@@ -1,0 +1,359 @@
+% ======================= Pre-Amble =========================
+      
+%Format
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format 
+                     						%imports package {article} and specify option(s) [11pt, oneside]
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots. 
+    \geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+    %\geometry{landscape}                		% Activate for rotated page geometry
+
+\usepackage[parfill]{parskip}    		        % Activate to begin paragraphs with an empty line rather than an indent
+
+    %Colours
+    \usepackage{graphicx, subcaption}
+    \usepackage[usenames, dvipsnames]{color}     % font colour:    \textcolor{<colour>}{text}
+          									%highlight text:  \colorbox{<color>}{text}
+    \usepackage{soul}						%highlight text: \hl{}     %only  yellow								
+    									%list of colours: https://www.sharelatex.com/learn/Using_colours_in_LaTeX
+    									
+    %Bullets
+    \usepackage{enumerate}     %specify type of enumeration: \being{enumerate}[<type of enumeration>]
+    
+    %Footnote Spacing
+    \setlength{\footnotesep}{0.4cm}                  %specify spacing b/w footnotes
+    \setlength{\skip\footins}{0.6cm}                    % space b/w footnotes and textbody
+
+
+%Mattematics
+    %American Mathematics Society packages
+    \usepackage{amsmath}	   %math
+    \usepackage{amssymb}       %symbols
+    \usepackage{amsthm}          %theorems
+
+    %QED
+    \newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}         %make qed filled square:    \QEDA
+    \newcommand*{\QEDB}{\hfill\ensuremath{\square}}               %make qed empty square: \QEDB 
+    
+    \renewcommand\qedsymbol{\ensuremath{\blacksquare}}		%Proof environment
+
+
+%Figures
+\usepackage{caption}
+\captionsetup[figure]{labelfont=bf}    %make figure labels boldface
+\captionsetup[table]{labelfont=bf}     %make table labels boldface
+
+\usepackage[hidelinks]{hyperref}                % Allows for clickable references
+
+    %Tables
+    \usepackage[none]{hyphenat}                    % Stops breaking-up words in a table (i.e. no hyphens)                                                             
+    
+    \usepackage{array}   
+    \newcolumntype{x}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}       %center fixed column width: x{<len>}                      
+    \newcolumntype{$}{>{\global\let\currentrowstyle\relax}}                                                   % let us apply things (e.g. bold/italicize) to entire row            
+    \newcolumntype{^}{>{\currentrowstyle}}
+    \newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1} #1\ignorespaces}
+    
+    %Images
+    \graphicspath{ {images/} }                          %directory that your images are located in within your current directory
+    
+    %Diagrams
+    \usepackage[latin1]{inputenc}
+    \usepackage{tikz}
+    \usepackage{tkz-berge}
+    \usetikzlibrary{shapes,arrows}
+
+
+%Bibliography
+\usepackage[numbers,sort&compress]{natbib}   %for multiple references: sorts  (i.e. [1,2] NOT [2, 1] )
+                                           				  %                                     compresses (i.e. [1-3] )
+\usepackage[nottoc]{tocbibind}                            %add bibliography to table of contents
+
+
+%Miscellaneous
+\usepackage{dirtytalk}    %quotations: use \say  
+
+
+
+%=========== Header & Footer =========================
+\usepackage{fancyhdr}
+\usepackage{lastpage}      %ensures you can reference LastPage (i.e. Page 2 of 10)
+
+\renewcommand{\headrulewidth}{0.4pt}		%Decorative Header line: thickness={0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}		%Decorative Footer line: thickness={0.4pt}
+
+\setlength{\headheight}{13.6pt} 		%space b/w top of page & header
+\setlength{\headsep}{0.3in}		%space b/w page header and body
+
+%Make Header & Footer    
+\pagestyle{fancy}
+    \lhead{Stephanie Knill} 		% controls the left corner of the header
+    \chead{} 					% controls the center of the header
+    \rhead{} 					% controls the right corner of the header
+    \lfoot{} 					% controls the left corner of the footer
+    \cfoot{Page~\thepage\ of \pageref{LastPage}} 				% controls the center of the footer
+    												%Page~\thepage\  if just want Page x
+    \rfoot{}			 		% controls the right corner of the footer
+
+% ======================== Document ======================
+\begin{document}
+
+% Title Page
+\title{MATH 220 --- Assignment 7 \\
+\line(1,0){360} \\              %(slope x, y){length of line}
+}
+\author{
+Stephanie Knill \\
+54882113 \\
+Due: March 3, 2016}
+
+\date{}                   % Activate:  display a given date (e.g. {August 4} ) or no date (empty {} )
+                                    %No activate: display current date
+\maketitle
+
+%\thispagestyle{empty}                   %Remove header from this (first) page. Change empty -> plain to keep numbering
+%								-> Doesn't matter in this case (b/c title page)
+%\cleardoublepage
+
+
+% ================= Questions ================
+
+\section*{Question 1}
+
+\textbf{Proposition:} Any non-empty subset of a well-ordered set of real numbers is well-ordered.
+
+\begin{proof}
+Let $S$ be a well-ordered set of real numbers and $S'$ a non-empty subset of $S$. Then we can express $S$ as
+$$S=\{x_1, x_2, \ldots, x_n\},$$
+where $x_i > x_j$, for all $i>j$.
+Since $S'$ is a finite set of real numbers that always contain a minimal element, then every subset of $S'$ will also contain a minimal element. Thus $S'$ is also well-ordered.
+\end{proof}
+
+\section*{Question 2}
+
+\begin{proof} We will prove by induction, that for all $n \in \mathbb{N}$
+\begin{align}
+\frac{1}{1\cdot2} + \frac{1}{2\cdot3} + \cdots + \frac{1}{n(n+1)} = \frac{n}{n+1}
+\label{eq1}
+\end{align}
+
+\textbf{Base Case:} $n=1$
+
+For the left hand side we have
+$$\frac{n}{1(n+1)} = \frac{1}{1(1+1)} = \frac{1}{2}$$
+which equates to the right hand side
+$$\frac{n}{n+1} = \frac{1}{1+1} = \frac{1}{2}$$
+
+\textbf{Induction Step:} assume the statement holds true for $1 < n < k$. So
+$$\sum_{n=1}^k \frac{1}{n(n+1)} = \frac{k}{k+1}$$
+For $n = k+1$, we have that
+\begin{align*}
+	\sum_{n=1}^{k+1} & = \sum_{n=1}^k + \frac{1}{(k+1)(k+2)} \\
+	 & = \frac{k}{k+1} + \frac{1}{(k+1)(k+2)} \qquad \text{(by inductive assumption)} \\
+	& = \frac{m(m+1)+1}{(m+1)(m+2)} \\
+	& = \frac{m+1}{m+2}
+\end{align*}
+Thus, \eqref{eq1} holds true for $n=k+1$, and the proof of the induction step is complete.
+
+\textbf{Conclusion:} By the principle of induction, \eqref{eq1} is true for all $n \in \mathbb{N}$.
+\end{proof}
+
+
+\section*{Question 3}
+
+\begin{proof} We will prove by induction, that for $a,b,m \in \mathbb{Z}$, if $a \equiv b$ mod $m$, then $a^n \equiv b^n$ mod $m$ for all $n \in \mathbb{N}$.
+
+\textbf{Base Case:} $n=1$
+$$a\equiv b \text{ mod } m $$
+\textbf{Induction Step:} assume the statement holds true for $n=k$. So
+$$a^k \equiv b^k \text{ mod } m$$
+For $n = k+1$, we can multiply our inductive assumption congruence with $a \equiv b \text{ mod } m$
+\begin{align*}
+	a^k \cdot a & \equiv b^k \cdot b \text{ mod } m \\
+	a^{k+1} & \equiv b^{k+1} \text{ mod } m 
+\end{align*}
+Thus, the statement holds true for $n=k+1$, and the proof of the induction step is complete.
+
+\textbf{Conclusion:} By the principle of induction, the statement is true for all $n \in \mathbb{N}$.
+\end{proof}
+
+
+\section*{Question 4}
+
+\begin{proof} We will prove by induction on the finite set $A$ of cardinality $n$, that for the power set $|\mathcal{P}(A)|$
+\begin{align}
+	|\mathcal{P}(A)| = 2^{|A|}
+\label{eq2}
+\end{align}
+
+\textbf{Base Case:} $n=0$. Here, $A$ is the empty set and $|A|=0$. Thus we have
+$$|\mathcal{P}(A)| = |\mathcal{P}(\emptyset)| = 1 = 2^{0} = 2^{|A|}$$
+
+\textbf{Induction Step:} assume the statement holds true for $n=k$. Then $|A|=k$ and $|P(A)| = 2^k$.
+
+For $n=k+1$, let us consider the set $A' = A \setminus \{x\}$, where $x \in A$. Here $|A'| = k$ and $|\{x\}|=2$. In the case where $x$ is not in a subset of $A$, we have $2^k$ possible subsets by the induction hypothesis. In the case where $x$ is a a subset of $A$, let us add the element $x$ to each of the $2^k$ subsets. Then the total number of subsets didn't change and we again have $2^k$ possible subsets. Thus the total number of subsets is
+\begin{align*}
+	2^k + 2^k & = 2 \cdot 2^k \\
+	& = 2^{k+1}
+\end{align*}
+Thus, \eqref{eq2} holds true for $n=k+1$, and the proof of the induction step is complete.
+
+\textbf{Conclusion:} By the principle of induction, \eqref{eq2} is true for all $n \in \mathbb{N}$.
+\end{proof}
+
+
+\section*{Question 5}
+
+\begin{proof}
+We will prove DeMorgan's laws by induction on the number of sets $n$, that for sets $A_1, \ldots A_n$
+\begin{align}
+	\overline{A_1 \cup \cdots \cup A_n} = \overline{A_1} \cap \overline{A_2} \cap \cdots \cap \overline{A_n}
+	\label{eq3}
+\end{align}
+
+\textbf{Base Case:} When $n=1$, both the left hand side and right hand side of \eqref{eq3} is $\overline{A_1}$.
+
+\textbf{Induction Step:} Let $k \in \mathbb{N}$ be given and suppose \eqref{eq3} is true for $n=k$. Then by the induction assumption
+\begin{align*}
+	\overline{A_1 \cup \cdots \cup A_k} & = \overline{A_1} \cap \overline{A_2} \cap \cdots \cap \overline{A_k} \\
+	\overline{\bigcup_{i=1}^k A_i} = \bigcap_{i=1}^k \overline{A_i}
+\end{align*}
+For $n=k+1$, we have
+\begin{align*}
+	\overline{\bigcup_{i=1}^{k+1} A_i} & =  \overline{\bigcup_{i=1}^{k} A_i \cup A_{k+1}} \\
+	& =  \overline{\bigcup_{i=1}^{k} A_i} \cap \overline{A_{k+1}} \\
+	& =  \bigcap_{i=1}^k \overline{A_i} \cap \overline{A_{k+1}} \qquad \text{(by inductive assumption)} \\
+	& = \bigcap_{i=1}^{k+1} \overline{A_i} 
+\end{align*}
+Thus, \eqref{eq3} holds for $n=k+1$, and the proof of the induction step is complete.
+
+\textbf{Conclusion:} By the principle of induction, \eqref{eq3} is true for all $n$.
+\end{proof}
+
+
+
+
+\section*{Question 6}
+\begin{proof}
+We will prove by induction over the natural numbers $n \geq 10$ that
+\begin{align}
+	2^n > n^3
+	\label{eq4}
+\end{align}
+
+\textbf{Base Case:} When $n=10$, we have
+$$2^{10} = 1024 > 1000 = 10^3 = n^3$$
+
+\textbf{Induction Step:} Let $k \in \mathbb{N}$ be given and suppose \eqref{eq4} is true for $n=k$. Then by the induction assumption
+\begin{align*}
+	2^k > k^3
+\end{align*}
+For $n=k+1$, we have
+\begin{align*}
+	2^{k+1} & = 2 \cdot 2^k\\
+	& > 2k^3 \qquad \text{(by inductive assumption)} \\
+	& = k^3 + k^3 \\
+\end{align*}
+Since $k>10$, then $k^3 > 7k^2$ and we have
+\begin{align*}
+	2^{k+1} & > k^3 + 7k^2 \\
+	& = k^3 + 3k^2 + 3k^2 + k^2 \\
+	& > k^3 + 3k^2 + 3k + 1 \\
+	& > (k+1)^3
+\end{align*}
+Thus, \eqref{eq4} holds for $n=k+1$, and the proof of the induction step is complete.
+
+\textbf{Conclusion:} By the principle of induction, \eqref{eq4} is true for all $n$.
+\end{proof}
+
+
+
+
+\section*{Question 7}
+
+Let $F_1, F_2, \ldots, F_N$ be a sequence of Fibonacci numbers. Then
+\begin{align}
+	F_n = \frac{1}{\sqrt{5}} \Big[\Big(\frac{1+\sqrt{5}}{2}\Big)^n - \Big(\frac{1-\sqrt{5}}{2}\Big)^n \Big]
+	\label{eq5}
+\end{align}
+
+\begin{proof}
+We will proceed by induction over the natural numbers $n$. 
+
+\textbf{Base Case:} When $n=1$, we have
+$$F_1 = \frac{1}{\sqrt{5}} \Big[\Big(\frac{1+\sqrt{5}}{2}\Big)^1 - \Big(\frac{1-\sqrt{5}}{2}\Big)^1 \Big] = \frac{1}{\sqrt{5}} \Big(\frac{2\sqrt{5}}{2}\Big) = 1$$
+
+\textbf{Induction Step:} Let $k \in \mathbb{N}$ be given and suppose \eqref{eq5} is true for $n=k$. For notation purposes, let $x=\frac{1+\sqrt{5}}{2}$ and $y= \frac{1-\sqrt{5}}{2}$. For $n=k+1$, we have
+\begin{align*}
+	F_{n+1} & = F_n + F_{n-1} \\
+	& = \frac{1}{\sqrt{5}} (x^n-y^n) + \frac{1}{\sqrt{5}} (x^{n-1} - y^{n-1}) \\
+	& = \frac{1}{\sqrt{5}} [x^{n-1}(x+1) - y^{n-1}(y+1)]
+\end{align*}
+Here, $x+1 = \frac{1+\sqrt{5}}{2} +1 = \frac{3+ \sqrt{5}}{2} = x^2$ and $y+1 = \frac{1-\sqrt{5}}{2} +1 = \frac{3- \sqrt{5}}{2} = y^2$. Substituting this back in
+\begin{align*}
+	F_{n+1} & = \frac{1}{\sqrt{5}} (x^{n-1}x^2 - y^{n-1}y^2) \\
+	& = \frac{1}{\sqrt{5}} (x^{n+1} - y^{n+1}) 
+\end{align*}
+Thus, \eqref{eq5} holds for $n=k+1$, and the proof of the induction step is complete.
+
+\textbf{Conclusion:} By the principle of induction, \eqref{eq5} is true for all $n$.
+\end{proof}
+
+
+\section*{Question 8}
+
+The complete graph $K_n$ of $n$ vertices contains precisely $\frac{n(n-1)}{2}$ edges.
+\begin{proof}
+By definition, the complete graph has $n$ vertices, each of which are connected to $n-1$ other vertices. So the degree of every vertex is $n-1$. Since we have $n$ vertices, we have $n(n-1)$ edges emerging from the vertices of $K_n$. However, each edge has 2 ends, so we have counted each edge twice. Hence, the total number of edges of $K_n$ is
+$$\frac{n(n-1)}{2}$$
+\end{proof}
+
+\section*{Question 9}
+\begin{enumerate}[(a)]
+
+\item Any tree must contain at least one vertex of degree 1.
+\begin{proof}
+Assume to the contrary that a tree of vertices $v_1, v_2, \ldots , v_n$ contains no vertex of degree 1. Let us take a walk along the longest path from vertex $v_i$ to vertex $v_j$. Since $v_j$ is not of degree 1, it is adjacent to another vertex $v$. Since there exists a path between vertex $v$ and $v_i$, we have another path from $v_j$ to $v_i$ thereby creating a cycle in our tree which is a contradiction.
+\end{proof}
+
+\item Any tree with $n$ vertices contains precisely $n-1$ edges.
+\begin{proof}
+We will proceed by induction over the number of vertices $n$.
+
+\textbf{Base Case:} When $n=1$, we have the null graph $N_1$ of 0 edges.
+
+\textbf{Induction Step:} Let $k \in \mathbb{N}$ be given and suppose the statement is true for $n=k$ vertices. Let $G$ denote the tree of $k$ vertices that has $k-1$ edges by the induction assumption. Let us add a vertex $v$ to $G$. Since the resulting graph must be connected, we have two cases:
+
+\emph{Case 1:} Join $v$ to $G$ with 1 edge. Here we have $k+1$ vertices and $k$ edges, so we are done.
+
+\emph{Case 2:} Join $v$ to $G$ with at least 2 edges. Since there exists a path between any two vertices $v_i$ and $v_j$ in $G$, if we join vertex $v$ to both $v_i$ and $v_j$ we will form a cycle of the form
+$$v\rightarrow v_i\rightarrow \cdots \rightarrow v_j \rightarrow v$$
+which is not allowed.
+
+Thus, the statement holds for $n=k+1$, and the proof of the induction step is complete.
+
+\textbf{Conclusion:} By the principle of induction the statement is true for all $n$.
+
+\end{proof}
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document} 
