@@ -125,7 +125,7 @@ Due: March 3, 2016}
 Let $S$ be a well-ordered set of real numbers and $S'$ a non-empty subset of $S$. Then we can express $S$ as
 $$S=\{x_1, x_2, \ldots, x_n\},$$
 where $x_i > x_j$, for all $i>j$.
-Since $S'$ is a finite set of real numbers that always contain a minimal element, then every subset of $S'$ will also contain a minimal element. Thus $S'$ is also well-ordered.
+Since $S'$ is a finite set of real numbers that contains a minimal element, then every subset of $S'$ will also contain a minimal element. Thus $S'$ is also well-ordered.
 \end{proof}
 
 \section*{Question 2}
@@ -149,8 +149,8 @@ For $n = k+1$, we have that
 \begin{align*}
 	\sum_{n=1}^{k+1} & = \sum_{n=1}^k + \frac{1}{(k+1)(k+2)} \\
 	 & = \frac{k}{k+1} + \frac{1}{(k+1)(k+2)} \qquad \text{(by inductive assumption)} \\
-	& = \frac{m(m+1)+1}{(m+1)(m+2)} \\
-	& = \frac{m+1}{m+2}
+	& = \frac{k(k+1)+1}{(k+1)(k+2)} \\
+	& = \frac{k+1}{k+2}
 \end{align*}
 Thus, \eqref{eq1} holds true for $n=k+1$, and the proof of the induction step is complete.
 
@@ -163,7 +163,9 @@ Thus, \eqref{eq1} holds true for $n=k+1$, and the proof of the induction step is
 \begin{proof} We will prove by induction, that for $a,b,m \in \mathbb{Z}$, if $a \equiv b$ mod $m$, then $a^n \equiv b^n$ mod $m$ for all $n \in \mathbb{N}$.
 
 \textbf{Base Case:} $n=1$
-$$a\equiv b \text{ mod } m $$
+$$a\equiv b \text{ mod } m$$
+is equivalent to
+ $$a^1\equiv b^1 \text{ mod } m$$
 \textbf{Induction Step:} assume the statement holds true for $n=k$. So
 $$a^k \equiv b^k \text{ mod } m$$
 For $n = k+1$, we can multiply our inductive assumption congruence with $a \equiv b \text{ mod } m$
@@ -190,7 +192,7 @@ $$|\mathcal{P}(A)| = |\mathcal{P}(\emptyset)| = 1 = 2^{0} = 2^{|A|}$$
 
 \textbf{Induction Step:} assume the statement holds true for $n=k$. Then $|A|=k$ and $|P(A)| = 2^k$.
 
-For $n=k+1$, let us consider the set $A' = A \setminus \{x\}$, where $x \in A$. Here $|A'| = k$ and $|\{x\}|=2$. In the case where $x$ is not in a subset of $A$, we have $2^k$ possible subsets by the induction hypothesis. In the case where $x$ is a a subset of $A$, let us add the element $x$ to each of the $2^k$ subsets. Then the total number of subsets didn't change and we again have $2^k$ possible subsets. Thus the total number of subsets is
+For $n=k+1$, let us consider the set $A' = A \setminus \{x\}$, where $x \in A$. Here $|A'| = k$ and $|\{x\}|=2$. In the case where $x$ is not in a subset of $A$, we have $2^k$ possible subsets by the induction hypothesis. In the case where $x$ is a a subset of $A$, let us add the element $x$ to each of the $2^k$ subsets. Then the total number of subsets in this case is also $2^k$. Thus the total number of subsets is
 \begin{align*}
 	2^k + 2^k & = 2 \cdot 2^k \\
 	& = 2^{k+1}
