@@ -1,0 +1,409 @@
+% ======================= Pre-Amble =========================
+      
+%Format
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format 
+                     						%imports package {article} and specify option(s) [11pt, oneside]
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots. 
+    \geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+    %\geometry{landscape}                		% Activate for rotated page geometry
+
+\usepackage[parfill]{parskip}    		        % Activate to begin paragraphs with an empty line rather than an indent
+
+    %Colours
+    \usepackage{graphicx, subcaption}
+    \usepackage[usenames, dvipsnames]{color}     % font colour:    \textcolor{<colour>}{text}
+          									%highlight text:  \colorbox{<color>}{text}
+    \usepackage{soul}						%highlight text: \hl{}     %only  yellow								
+    									%list of colours: https://www.sharelatex.com/learn/Using_colours_in_LaTeX
+    									
+    %Bullets
+    \usepackage{enumerate}     %specify type of enumeration: \being{enumerate}[<type of enumeration>]
+    
+    %Footnote Spacing
+    \setlength{\footnotesep}{0.4cm}                  %specify spacing b/w footnotes
+    \setlength{\skip\footins}{0.6cm}                    % space b/w footnotes and textbody
+
+
+%Mattematics
+    %American Mathematics Society packages
+    \usepackage{amsmath}	   %math
+    \usepackage{amssymb}       %symbols
+    \usepackage{amsthm}          %theorems
+
+    %QED
+    \newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}         %make qed filled square:    \QEDA
+    \newcommand*{\QEDB}{\hfill\ensuremath{\square}}               %make qed empty square: \QEDB 
+    
+    \renewcommand\qedsymbol{\ensuremath{\blacksquare}}		%Proof environment
+
+
+%Figures
+\usepackage{caption}
+\captionsetup[figure]{labelfont=bf}    %make figure labels boldface
+\captionsetup[table]{labelfont=bf}     %make table labels boldface
+
+\usepackage[hidelinks]{hyperref}                % Allows for clickable references
+
+    %Tables
+    \usepackage[none]{hyphenat}                    % Stops breaking-up words in a table (i.e. no hyphens)                                                             
+    
+    \usepackage{array}   
+    \newcolumntype{x}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}       %center fixed column width: x{<len>}                      
+    \newcolumntype{$}{>{\global\let\currentrowstyle\relax}}                                                   % let us apply things (e.g. bold/italicize) to entire row            
+    \newcolumntype{^}{>{\currentrowstyle}}
+    \newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1} #1\ignorespaces}
+    
+    %Images
+    \graphicspath{ {images/} }                          %directory that your images are located in within your current directory
+    
+    %Diagrams
+    \usepackage[latin1]{inputenc}
+    \usepackage{tikz}
+    \usepackage{tkz-berge}
+    \usetikzlibrary{shapes,arrows}
+
+
+%Bibliography
+\usepackage[numbers,sort&compress]{natbib}   %for multiple references: sorts  (i.e. [1,2] NOT [2, 1] )
+                                           				  %                                     compresses (i.e. [1-3] )
+\usepackage[nottoc]{tocbibind}                            %add bibliography to table of contents
+
+
+%Miscellaneous
+\usepackage{dirtytalk}    %quotations: use \say  
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+
+
+%=========== Header & Footer =========================
+\usepackage{fancyhdr}
+\usepackage{lastpage}      %ensures you can reference LastPage (i.e. Page 2 of 10)
+
+\renewcommand{\headrulewidth}{0.4pt}		%Decorative Header line: thickness={0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}		%Decorative Footer line: thickness={0.4pt}
+
+\setlength{\headheight}{13.6pt} 		%space b/w top of page & header
+\setlength{\headsep}{0.3in}		%space b/w page header and body
+
+%Make Header & Footer    
+\pagestyle{fancy}
+    \lhead{Stephanie Knill} 		% controls the left corner of the header
+    \chead{} 					% controls the center of the header
+    \rhead{} 					% controls the right corner of the header
+    \lfoot{} 					% controls the left corner of the footer
+    \cfoot{Page~\thepage\ of \pageref{LastPage}} 				% controls the center of the footer
+    												%Page~\thepage\  if just want Page x
+    \rfoot{}			 		% controls the right corner of the footer
+
+% ======================== Document ======================
+\begin{document}
+
+% Title Page
+\title{MATH 220 --- Assignment 8 \\
+\line(1,0){360} \\              %(slope x, y){length of line}
+}
+\author{
+Stephanie Knill \\
+54882113 \\
+Due: March 17, 2016}
+
+\date{}                   % Activate:  display a given date (e.g. {August 4} ) or no date (empty {} )
+                                    %No activate: display current date
+\maketitle
+
+%\thispagestyle{empty}                   %Remove header from this (first) page. Change empty -> plain to keep numbering
+%								-> Doesn't matter in this case (b/c title page)
+%\cleardoublepage
+
+
+% ================= Questions ================
+
+\section*{Question 1}
+
+Find the domain and range of the function $f(x) = \frac{\sqrt{x-1}}{x}$ (assume $x$ is real).
+
+\emph{Domain}
+
+For the numerator we have that $x-1 \geq 0$, so $x\geq 1$. In the denominator $x \neq 0$. Thus overall we have
+$$dom(f) = \{x \in \mathbb{R} \mid x \geq 1\}$$
+
+\begin{proof}
+Assume to the contrary that $x \notin dom(f)$. Let $x = 1 - \delta$, where $\delta$ non-negative constant. Substituting this into $f(x)$ we have
+$$f(x) = \frac{\sqrt{(x-\delta)-1}}{x}$$
+which is undefined. Thus we have arrived at a contradiction and $x \in dom(f)= \{x \in \mathbb{R} \mid x \geq 1\}$.
+\end{proof}
+
+\emph{Range}
+
+Since $x \geq 1$, we have the minimal value of $f(x)$ to be at $f(1) = 0$ and the maximal value of $f(x)$ to be at $f(1) = 1/2$. Thus we have that
+$$range(f) = \{f(x) \in \mathbb{R} \mid 0 \leq y \leq 1/2 \}$$
+
+\begin{proof}
+Assume to the contrary that $f(x) \notin range(f)$. The we have that $f(x) = 0 - \delta$ or $f(x) = 1/2 + \alpha$, where $\delta, \alpha$ non-negative constant. Substituting in we have
+$$0 - \delta = \frac{\sqrt{x-1}}{x}$$
+$$\delta = - \frac{\sqrt{x-1}}{x}$$
+which is a contradiction since $\delta > 0$. Similarly in the case of $f(x) = 1/2 + \alpha$ we also derive a contradiction. Thus we have that $range(f) = \{f(x) \in \mathbb{R} \mid 0 \leq y \leq 1/2 \}$.
+\end{proof}
+
+\section*{Question 2}
+
+Let $f : \mathbb{R} \to \mathbb{R}$ be the function defined by $f(x)=x^2+3x+4$.
+\begin{enumerate}[\quad(a)]
+	\item $f$ is not injective.
+		\begin{proof} 
+		Let $x_1=0$ and $x_2=-3$. Then $f(x_1) = 4 = f(x_2)$, thus $f$ is not injective.
+		\end{proof}
+	\item Find all pairs $a,b$ of real numbers so that $f(a) = f(b)$.
+	
+	Let $f(a) = f(b)$, where $a,b \in \mathbb{R}$. Then
+	\begin{align*}
+		a^2+3a+4 & = b^2+3b+4 \\
+		a^2+3a-b^2-3b & = 0 \\
+		(a^2-b^2) + 3(a-b) & = 0 \\
+		(a-b)(a+b+3) & = 0
+	\end{align*}
+	Thus for $f(a)=f(b)$, $a=b$ or $a=-(b+3)$. In other words, we have that $f$ is injective when $$\{(a,b) \in \mathbb{R} \mid a=b \text{ or } a=-(b+3) \}$$
+\end{enumerate}
+
+
+\section*{Question 3}
+
+ Let $h:\mathbb{Z} \to \mathbb{Z}$ be a function defined by $h(n) = 3n-8$.
+\begin{enumerate}[\quad(a)]
+	\item Prove: $f$ is injective.
+		\begin{proof} 
+		Assume $h(a) = h(b)$, where $a,b \in \mathbb{Z}$. Then
+		\begin{align*}
+			3a-8 & = 3b-8 \\
+			3a & = 3b \\
+			a& = b 
+		\end{align*}
+		Thus $f$ is injective.
+		\end{proof}
+	\item Disprove: $f$ is surjective.
+	
+	Let $h(n) =0 \in \mathbb{Z}$. Then
+	\begin{align*}
+		3n-8 & = 0 \\
+		n & = \frac{8}{3} 
+	\end{align*}
+	Since $n=\frac{8}{3} \notin \mathbb{Z}$, $f$ is not surjective.
+\end{enumerate}
+
+\section*{Question 4}
+
+Give an example of a function $f : \N \to \N$ that is
+\begin{enumerate}[\quad(a)]
+	\item one-to-one and onto
+	$$f(x) = x$$
+	\item one-to-one but not onto
+	$$f(x)=x+1$$.
+	Here, range($f)=\N-\{1\}.$
+	\item onto but not one-to-one
+	\begin{align*}
+		f(x) = \begin{cases}
+				x-1 & \text{if } x \geq 2 \\
+				x & \text{if } x = 1
+			\end{cases}
+	\end{align*}
+	\item neither one-to-one or onto
+	\begin{align*}
+		f(x) = \begin{cases}
+				1 & \text{if } x \text{ odd} \\
+				2 & \text{if } x \text{ even}
+			\end{cases}
+	\end{align*}
+\end{enumerate}
+
+
+\section*{Question 5}
+
+Prove or disprove: for every set $A$ there is an injective function $f : A \to \mathcal{P}(A)$
+\begin{proof}\footnote{A counterexample may have also sufficed. Let $A=\{1,2\}$, then $\mathcal{P}(A) = \{\emptyset, \{1\}, \{2\}, \{1,2\}\}$. Thus $|A| = 2 < 4 = \mathcal{P}(A)$ and $f$ is not injective. \QEDA}
+For a function $f : A \to \mathcal{P}(A)$ to be injective, then
+$$|A| \geq |\mathcal{P}(A)|$$
+However we know that $\mathcal{P}(A) = 2^{|A|}$. Thus $|A| \geq 2^{|A|}$ and the function $f$ is not injective.
+\end{proof}
+
+
+
+\section*{Question 6}
+
+Give an example of
+\begin{enumerate}[\quad(a)]
+	\item A bijection from (0,1) to $(1,\infty)$
+	$$f(x) = tan\Big(\frac{\pi x}{2}\Big)+1$$
+	\begin{proof}
+	Let us first prove that $f$ is injective. Assume that $f(a) = f(b)$. Then
+	\begin{align*}
+		tan\Big(\frac{\pi a}{2}\Big)+1 & = tan\Big(\frac{\pi b}{2}\Big)+1 \\
+		tan\Big(\frac{\pi a}{2}\Big) & = tan\Big(\frac{\pi b}{2}\Big) 
+	\end{align*}
+	Since $a, b \in (0,1)$ and the tangent has a period of $\pi$, then for $tan\Big(\frac{\pi a}{2}\Big) = tan\Big(\frac{\pi b}{2}\Big)$, we must have that $a=b$. Thus $f$ is injective. Let us now prove that $f$ is also surjective. Let $r \in (1,\infty)$ and $x = \frac{2}{\pi} tan^{-1}(r-1)$. Then
+	\begin{align*}
+		f(x) = tan \Big( \frac{\pi}{2} \cdot \frac{2}{\pi} tan^{-1}(r-1)\Big) +1 = (r-1) + 1 = r
+	\end{align*}
+	thereby making $f$ also surjective. Since $f$ is both injective and surjective, we can conclude that $f$ is bijective.
+	\end{proof}
+	
+	\item A surjection from $\R$ to $\mathbb{Q}$
+	\begin{align*}
+		f(x) = \begin{cases}
+				x & \text{if } x \in \mathbb{Q} \\
+				0 & \text{if } x \notin \mathbb{Q}
+			\end{cases}
+	\end{align*}
+	\begin{proof}
+	Let $r \in \Q$. We will us examine the case where $x \in \Q$. Here
+	$$f(x) = f(r) = r$$
+	Which means we hit every point in the range, thus making it surjective. \footnote{Although we do not need to examine the case where $x \notin \Q$, we have $f(x) = f(0) = 0 \in \Q$ which makes this function only surjective, rather than bijective.}
+	\end{proof}
+	
+	\item A bijection from $\N$ to $\Z$
+	\begin{align*}
+		f(x) = \begin{cases}
+				-\frac{x}{2} & \text{if } x \text{ even} \\
+				\frac{x-1}{2} & \text{if } x \text{ odd}
+			\end{cases}
+	\end{align*}
+	\begin{proof}
+	Let us first prove that $f$ is injective. Assume that $f(a) = f(b)$. In the case where $x$ is even
+	\begin{align*}
+		-\frac{a}{2} & = -\frac{b}{2} \\
+		a& = b
+	\end{align*}
+	Similarly in the case where $x$ is odd
+	\begin{align*}
+		\frac{a-1}{2} & = \frac{b-1}{2} \\
+		a& = b
+	\end{align*}
+	Thus $f$ is injective. Let us now prove that $f$ is also surjective. Let $r \in \Z$. In the first case where $x$ is even, let $x=-2r$. Then
+	$$f(-2r)=-\frac{-2r}{2} = r$$
+	Similarly in the case where $x$ is odd, let $x=2r+1$. Then
+	$$f(2r+1) = \frac{(2r+1)-1}{2} = r$$
+	thereby making $f$ also surjective. Since $f$ is both injective and surjective, we can conclude that $f$ is bijective.
+	\end{proof}
+\end{enumerate}
+
+
+
+\section*{Question 7}
+
+Let $f:A \to B$ be a function and if $D\subset B$, recall that the inverse image of $D$ under $f$ is by definition the set 
+$f^{-1}(D)=\{x\in A:f(x)\in D\}$.  
+Note that $f^{-1}(D)$  is a \emph{set}, and is defined for any function $f$, even if $f$ does not have an inverse.
+
+\begin{enumerate}[\quad(a)]
+	\item If $D_1, D_2 \subseteq B$, prove that 
+	\begin{align*}
+ 		 f^{-1}(D_1 \cap D_2) = f^{-1}(D_1) \cap f^{-1}(D_2)  
+	\end{align*}
+	\begin{proof}
+		$\subseteq$ Let $x \in f^{-1}(D_1 \cap D_2)$. So $f(x) \in D_1 \cap D_2$. Since $f(x) \in D_1$ and $f(x) \in D_2$, we have that $x \in f^{-1}(D_1)$ and $x \in f^{-1}(D_2)$. Thus $x \in f^{-1}(D_1) \cap f^{-1}(D_2)$ and we have that $f^{-1}(D_1 \cap D_2) \subseteq f^{-1}(D_1) \cap f^{-1}(D_2)$ 
+		
+		$\supseteq$ Let $x \in f^{-1}(D_1) \cap f^{-1}(D_2)$. Then $x \in f^{-1}(D_1)$ and $x \in f^{-1}(D_2)$, so we have that $f(x) \in D_1$ and $f(x) \in D_2$. Since $f(x) \in D_1 \cap D_2$, then $x \in f^{-1}(D_1 \cap D_2)$. Thus we can conclude that $f^{-1}(D_1 \cap D_2) \supseteq f^{-1}(D_1) \cap f^{-1}(D_2)$ 
+		
+	\end{proof}
+	
+	\item If $D_1, D_2 \subseteq B$, prove that 
+	\begin{align*}
+  		f^{-1}(D_1 \cup D_2) = f^{-1}(D_1) \cup f^{-1}(D_2)  
+	\end{align*}
+	\begin{proof}
+		$\subseteq$ Let $x \in f^{-1}(D_1 \cup D_2)$. So $f(x) \in D_1 \cup D_2$. Since $f(x) \in D_1$ or $f(x) \in D_2$, we have that $x \in f^{-1}(D_1)$ or $x \in f^{-1}(D_2)$. Thus $x \in f^{-1}(D_1) \cup f^{-1}(D_2)$ and we have that $f^{-1}(D_1 \cup D_2) \subseteq f^{-1}(D_1) \cup f^{-1}(D_2)$ 
+		
+		$\supseteq$ Let $x \in f^{-1}(D_1) \cup f^{-1}(D_2)$. Then $x \in f^{-1}(D_1)$ or $x \in f^{-1}(D_2)$, so we have that $f(x) \in D_1$ or $f(x) \in D_2$. Since $f(x) \in D_1 \cup D_2$, then $x \in f^{-1}(D_1 \cup D_2)$. Thus we can conclude that $f^{-1}(D_1 \cup D_2) \supseteq f^{-1}(D_1) \cup f^{-1}(D_2)$ 
+
+	\end{proof}
+	
+	\item If $D\subset B$, prove that
+	\begin{align*}
+  		f^{-1}(B - D) = A - f^{-1}(D)
+	\end{align*}
+	\begin{proof}
+	$\subseteq$ Let $x \in f^{-1}(B-D)$. Then
+	\begin{align*}
+		x & \in f^{-1}(B \cap D^c) \\
+		x & \in f^{-1}(B) \cap f^{-1} (D^c) \qquad \text{(by proof 7b)}\\
+		x & \in A \cap f^{-1} (D^c) \\
+		x & \in A - f^{-1} (D)
+	\end{align*}
+	$\supseteq$ Let $x \in A - f^{-1} (D)$. Then
+	\begin{align*}
+		x & \in A \cap f^{-1} (D^c) \\
+		x & \in f^{-1}(B) \cap f^{-1} (D^c) \\
+		x & \in f^{-1}(B \cap D^c) \\
+		x & \in f^{-1}(B-D)
+	\end{align*}
+	\end{proof}
+\end{enumerate}
+
+\section*{Question 8}
+
+Let $A$ be a well-ordered set. Let $f:{\mathcal P}(A)\to A$ be the function that assigns to every  $B\subseteq A$ the smallest element of $B$. 
+\begin{enumerate}[\quad (a)]
+	\item Is $f$ a function?
+	\begin{proof}
+	Let $x \in B$. Since $B \subseteq A$ and $A$ is a well-ordered set, then $B$ contains a minimal element. Thus for every input $B$ we have a minimal element (we need not worry about the case where $B$ is the empty set), thus a single output. By definition then $f$ is a function. 	\end{proof}
+	\item Is $f$ injective?
+	\begin{proof}
+		Let $A=\{1,2\}$. Then for $B=\{1\}$ and $B=\{1,2\}$, both have a minimal element of 1, thereby making $f$ not injectvie.
+	\end{proof}
+	\item Is $f$ surjective?
+	\begin{proof}
+		Since $A$ is a well-ordered set, then every subset of $A$, in other words the power set of $A$, contains a minimal element. Thus each subset within the power set $\mathcal{P}(A)$ will map onto an element in $A$. Since a subset of cardinality 1 will always have a minimal element of itself, we know that $\mathcal{P}(A)$ has the additional property of mapping onto all elements of $A$, thereby making $f$ surjective.
+	\end{proof}
+\end{enumerate}
+
+\section*{Question 9}
+\begin{enumerate}[(a)]
+	\item Prove that if $f:A\to B$ is an injective function, then $f(C_1\cap C_2)=f(C_1)\cap f(C_2)$ for all $C_1, C_2\subseteq A$.
+	\begin{proof}
+		$\subseteq$ Let $x \in f(C_1\cap C_2)$. Then
+		$$f^{-1}(x) \in C_1 \cap C_2$$
+		$$f^{-1}(x) \in C_1 \text{ and } f^{-1}(x) \in C_2$$
+		$$x \in f(C_1) \text{ and } x \in f(C_2)$$
+		$$x \in f(C_1) \cap f(C_2)$$
+%		\begin{align*}
+%			f^{-1}(x) \in C_1 \cap C_2 \\
+%			f^{-1}(x) \in C_1 \text{ and } f^{-1}(x) \in C_2 \\
+%			x \in f(C_1) \text{ and } x \in f(C_2) \\
+%			x \in f(C_1) \cap f(C_2)
+%		\end{align*}
+		Thus $f(C_1\cap C_2) \subseteq f(C_1)\cap f(C_2)$.
+		
+		$\supseteq$ Let $x \in  f(C_1) \cap f(C_2)$ Then $x \in f(C_1)$ and $x \in f(C_2)$. Since $x \in f(C_1)$, $\exists y_1 \in A$ such that $f(y_1)=x$. Similarly, since $x \in f(C_2)$, $\exists y_2 \in A$ such that $f(y_2)=x$. Since $f(y_1) = x = f(y_2$ and $f$ is an injection, then $y_1=y_2$. Therefore $y_1 \in C_2$ and $y_1 \in C_1 \cap C_2$. Thus we have that $x=f(y_1) \in f(C_1 \cap C_2)$ and we have shown that $f(C_1\cap C_2) \supseteq f(C_1)\cap f(C_2)$.
+		
+	\end{proof}
+	
+	\item Prove that if $f:A\to B$ is a surjective function, then $f(f^{-1}(D))=D$ for every subset $D\subseteq B$.
+	\begin{proof}
+	$\subseteq$ Let $x \in f(f^{-1}(D))$. Then $\exists a \in f^{-1}(D)$ such that $f(a)=x$. By the definition of pre-image, $x \in D$ and we are done.
+	
+	$\supseteq$ Let $x \in D$. Since $f$ is a surjection, there exists $a \in A$ such that $f(a)=x$. Thus $a \in f^{-1}(D)$ and we have that $f(a) \in f(f^{-1}(D))$. Here $x=f(a)$, so $x \in f(f^{-1}(D))$.
+	
+	\end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document} 
